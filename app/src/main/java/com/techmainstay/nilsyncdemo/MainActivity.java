@@ -96,7 +96,7 @@ public class MainActivity  extends AppCompatActivity {
                 cursor.getString(1);
                 cursor.getString(2);
                 data = data+"---"+"->" + cursor.getInt(0) + "->" + cursor.getString(1)
-                        + "->" + cursor.getString(2);
+                        + "->" + cursor.getString(2)+ "->" + cursor.getInt(3);
 
 
                 showData.setText(data);
@@ -112,6 +112,7 @@ public class MainActivity  extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put("name", "nilesh");
         values.put("grade", "78");
+        values.put("syncflag", "0");
         Uri uri = getContentResolver().insert(StubProvider.CONTENT_URI, values);
 
         Long id = Long.valueOf(uri.getLastPathSegment());
@@ -122,27 +123,20 @@ public class MainActivity  extends AppCompatActivity {
             System.out.println("not inserted");
         }
 
+        Bundle settingsBundle = new Bundle();
+        settingsBundle.putBoolean(
+                ContentResolver.SYNC_EXTRAS_MANUAL, true);
+        settingsBundle.putBoolean(
+                ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
+       
+
+        ContentResolver.requestSync(mAccount, AUTHORITY, settingsBundle);
+
+
+
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

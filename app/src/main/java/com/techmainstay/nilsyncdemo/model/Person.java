@@ -12,12 +12,18 @@ public class Person extends RealmObject {
 
     private String name;
     private String age;
-    private Dog dog;
-    private RealmList<Cat> Cat;
-    @Ignore
-    private int tempReference;
+    private int syncflag;
 
-    private long id;
+    public Person(){
+
+    }
+
+    public Person(String name,String age,int syncflag){
+
+        this.age = age;
+        this.name=name;
+        this.syncflag=syncflag;
+    }
 
     public String getName() {
         return name;
@@ -35,35 +41,11 @@ public class Person extends RealmObject {
         this.age = age;
     }
 
-    public Dog getDog() {
-        return dog;
+    public int getSyncflag() {
+        return syncflag;
     }
 
-    public void setDog(Dog dog) {
-        this.dog = dog;
-    }
-
-    public RealmList<com.techmainstay.nilsyncdemo.model.Cat> getCat() {
-        return Cat;
-    }
-
-    public void setCat(RealmList<com.techmainstay.nilsyncdemo.model.Cat> cat) {
-        Cat = cat;
-    }
-
-    public int getTempReference() {
-        return tempReference;
-    }
-
-    public void setTempReference(int tempReference) {
-        this.tempReference = tempReference;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public void setSyncflag(int syncflag) {
+        this.syncflag = syncflag;
     }
 }

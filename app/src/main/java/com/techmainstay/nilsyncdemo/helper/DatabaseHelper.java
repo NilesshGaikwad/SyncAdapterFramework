@@ -23,7 +23,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             " CREATE TABLE " + STUDENTS_TABLE_NAME +
                     " (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " name TEXT NOT NULL, " +
-                    " grade TEXT NOT NULL);";
+                    " grade TEXT NOT NULL," +
+                    "syncflag INTEGER NOT NULL);";
 
 
     public DatabaseHelper(Context context) {
