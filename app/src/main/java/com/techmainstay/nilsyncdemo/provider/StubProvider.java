@@ -164,9 +164,15 @@ return _uri;
             String selection,
             String[] selectionArgs) {
         System.out.println("In Provider update");
+int count = 0;
+DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
+        SQLiteDatabase sdb = databaseHelper.getWritableDatabase();
 
-
-
+switch (uriMatcher.match(uri)){
+ case STUDENTS:
+      count = sdb.update(STUDENTS_TABLE_NAME,values,selection,selectionArgs);
+break;
+}
 
         return 0;
     }
